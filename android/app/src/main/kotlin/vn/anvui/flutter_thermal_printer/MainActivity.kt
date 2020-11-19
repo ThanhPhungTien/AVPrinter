@@ -76,13 +76,12 @@ class MainActivity : FlutterActivity() {
                     val bitmap: Bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray!!.size)
                     printPhoto(bitmap)
                 }
-
-
+                
             }
         }
-
     }
 
+    // Lấy danh sách những thiết bị bluetooth đã từng kết nối//
 
     private fun getPairedList(): ArrayList<String> {
         pairedDevices = bluetoothAdapter.bondedDevices
@@ -107,6 +106,7 @@ class MainActivity : FlutterActivity() {
 
     }
 
+    // chọn thiết bị trong danh sách đã từng kết nối
     private fun onItemClick(i: Int) {
         bluetoothAdapter.cancelDiscovery()
 
@@ -135,6 +135,7 @@ class MainActivity : FlutterActivity() {
         }
     }
 
+    // tạo cổng nghe từ điện thoại với máy in bluetooth
     private fun beginListenData() {
         try {
             //    final Handler handler = new Handler();
@@ -170,6 +171,7 @@ class MainActivity : FlutterActivity() {
         }
     }
 
+    // in ảnh từ dữ liệu bitmap truyền vào
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     fun printPhoto(bitmap: Bitmap) {
@@ -185,7 +187,7 @@ class MainActivity : FlutterActivity() {
         }
     }
 
-
+    // Ngắt kết nối với máy in 
     @Throws(IOException::class)
     fun disconnectBT() {
         try {
